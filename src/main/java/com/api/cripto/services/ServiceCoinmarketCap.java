@@ -18,14 +18,31 @@ public class ServiceCoinmarketCap {
     @Value("${UrlServiceCoinmarketCap}")
     private String URL;
 
-    public JSONObject getResults() {
+    public JSONObject getAllResults() {
+        String url = URL + "cryptocurrency/listings/latest?start=1&limit=5&convert=USD";
+
+        return getPeticion(url);
+    }
+
+    public JSONObject getIdCriptoResults(String id) {
+        String url = URL + "cryptocurrency/info?id=" + id;
+
+        return getPeticion(url);
+    }
+
+    public JSONObject getValorCriptoResults(String convert) {
+        String url = URL + "global-metrics/quotes/latest?convert=" + convert;
+
+        return getPeticion(url);
+    }
+
+    public JSONObject getPeticion(String url) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CMC_PRO_API_KEY", ApiKey);
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange(URL, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         JSONObject jsonObject = (JSONObject) JSONValue.parse(response.getBody());
         return jsonObject;
     }
-
 }
