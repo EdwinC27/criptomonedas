@@ -36,8 +36,12 @@ public class ServiceCoinmarketCap {
 
     public JSONObject getIdCriptoResults(String id) throws MalformedURLException {
         URL url = new URL(urlPeticion + "cryptocurrency/info?id=" + id);
+        JSONObject response = getPeticion(url);
 
-        return getPeticion(url);
+        JSONObject general = (JSONObject) response.get("data");
+        JSONObject data = (JSONObject) general.get(id);
+
+        return generateJSON.accommodateJSONIdCriptoResults(data);
     }
 
     public JSONObject getValorCriptoResults(String convert) throws MalformedURLException {

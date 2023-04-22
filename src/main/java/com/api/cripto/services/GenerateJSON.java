@@ -31,4 +31,15 @@ public class GenerateJSON {
 
         return jsonObject;
     }
+
+    public JSONObject accommodateJSONIdCriptoResults(JSONObject data) {
+        JSONObject result = new JSONObject();
+        result.put("symbol", data.get("symbol"));
+        result.put("description", data.get("description"));
+        result.put("contracts", data.get("contracts"));
+        result.put("tags", data.get("tags"));
+        result.put("social", data.get("social"));
+
+        return result;
+    }
 }
