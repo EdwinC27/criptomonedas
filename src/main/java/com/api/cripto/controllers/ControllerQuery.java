@@ -30,7 +30,8 @@ public class ControllerQuery {
                     content = @Content(schema = @Schema(implementation = Error.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(schema = @Schema(implementation = Error.class)))
-    })    public JSONObject query(@RequestParam(value = "idCripto", required = false) String idCripto, @RequestParam(value = "convert", required = false) String convert) {
+    })
+    public JSONObject query(@RequestParam(value = "idCripto", required = false) String idCripto, @RequestParam(value = "convert", required = false) String convert) {
         JSONObject results = new JSONObject();
         String Endpoint = null;
         String Status;

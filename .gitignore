@@ -6,7 +6,7 @@ target/
 mvnw
 mvnw.cmd
 .mvn
-src/main/resources/keys.properties
+
 
 ### STS ###
 .apt_generated
