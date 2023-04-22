@@ -31,7 +31,7 @@ public class ServiceCoinmarketCap {
 
         JSONArray dataArray = (JSONArray) response.get("data");
 
-        return generateJSON.accommodateJSON(dataArray);
+        return generateJSON.accommodateJSONAllResults(dataArray);
     }
 
     public JSONObject getIdCriptoResults(String id) throws MalformedURLException {

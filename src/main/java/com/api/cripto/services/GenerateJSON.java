@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GenerateJSON {
-    public JSONObject accommodateJSON(JSONArray dataArray) {
+    public JSONObject accommodateJSONAllResults(JSONArray dataArray) {
         JSONObject jsonObject = new JSONObject();
 
         // Recorrer toda la info que contiene dataArray
