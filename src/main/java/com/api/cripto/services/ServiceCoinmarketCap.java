@@ -1,8 +1,10 @@
 package com.api.cripto.services;
 
+import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -20,11 +22,16 @@ public class ServiceCoinmarketCap {
     private String ApiKey;
     @Value("${UrlServiceCoinmarketCap}")
     private String urlPeticion;
+    @Autowired
+    private GenerateJSON generateJSON;
 
     public JSONObject getAllResults() throws MalformedURLException {
         URL url = new URL( urlPeticion + "cryptocurrency/listings/latest?start=1&limit=5&convert=USD");
+        JSONObject response = getPeticion(url);
 
-        return getPeticion(url);
+        JSONArray dataArray = (JSONArray) response.get("data");
+
+        return generateJSON.accommodateJSON(dataArray);
     }
 
     public JSONObject getIdCriptoResults(String id) throws MalformedURLException {
