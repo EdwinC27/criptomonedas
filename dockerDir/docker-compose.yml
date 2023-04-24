@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  postgres_criptomonedas:
+    image: "edwinc27/postgres-api-rest-criptomonedas"
+    ports:
+      - 5432:5432
+
+  app_criptomonedas:
+    image: "edwinc27/api-rest-criptomonedas"
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres_criptomonedas
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgres_criptomonedas:5432/criptomonedas
+      - spring.datasource.username=postgres
+      - spring.datasource.password=postgres
