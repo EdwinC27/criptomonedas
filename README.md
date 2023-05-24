@@ -11,7 +11,7 @@ Por otro lado, cada vez que se obtiene información de la API o se devuelve info
 Para mas informacion de arquitectura acceda a este documento <a href="https://github.com/EdwinC27/criptomonedas/blob/main/documentacionArquitectura.md">documentacionArquitectura.md</a> 
 
 
-### Para utilizar el servicio, se pueden enviar solicitudes a través de dos URLs:
+### Para utilizar el servicio, se pueden enviar solicitudes a través de estas URLs:
 
 > http://localhost:8080/api/query?idCripto=id_ciudad : para obtener la informacion de una criptomoneda en particular.
 
@@ -25,6 +25,17 @@ Para mas informacion de arquitectura acceda a este documento <a href="https://gi
 
 > http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config: para acceder a la interfaz de usuario Swagger UI.
 
+
+### Para utilizar la API, primero deves ingresar a la siguiente URL para obtener un token:
+
+> http://localhost:8080/login : esa URL es con el método post además de poner en el Body  una estructura similar a la siguiente :
+ ```  
+   {
+     "userName": usuario,
+     "password": contraseña
+   }
+ ```
+ La respuesta que te regrese la deves de mandar en las peticiones anteriores
 
 ## Requisitos:
 - Para poder utilizar este programa, es necesario que su sistema operativo tenga instalado Java 11 o una versión más reciente. Si no cuenta con Java, puede descargar e instalar la versión correspondiente, por ejemplo desde la página de: https://adoptium.net/temurin/releases/.
